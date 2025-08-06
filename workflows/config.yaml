@@ -1,5 +1,3 @@
-# workflows/config.yaml
-
 settings:
   headless: false
   browser: "chromium"
@@ -9,52 +7,34 @@ settings:
   zoom_level: 1.0
 
 authentication:
-  enabled: true # Bật để lưu và tải cookie
-  profile_path: "cookies/the_internet_session.json"
+  enabled: true
+  # Đường dẫn đến tệp cookie của bạn.
+  # Tệp này phải tồn tại và còn hiệu lực.
+  profile_path: "cookies/facebook_session.json"
 
 workflow:
-  # Bước 1: Đi tới trang đăng nhập
   - action: "goto"
     params:
-      url: "http://the-internet.herokuapp.com/login"
-    description: "Navigate to the login page"
+      url: "https://www.facebook.com"
+    description: "Truy cập Facebook bằng cookie"
 
-  # Bước 2: Click vào ô username và nhập liệu
-  - action: "type"
+  - action: "wait"
     params:
-      x: 950
-      y: 470
-      text: "tomsmith"
-      clear_first: true
-    description: "Enter username"
+      milliseconds: 7000
+    description: "Chờ trang tải xong"
 
-  # Bước 3: Click vào ô password và nhập liệu
-  - action: "type"
-    params:
-      x: 950
-      y: 500
-      text: "SuperSecretPassword!"
-    description: "Enter password"
-      
-  # Bước 4: Click nút Login
   - action: "click"
     params:
-      x: 950
-      y: 555
-    description: "Click the login button"
+      x: 36
+      y: 99
+    description: "Click vào tọa độ (36, 99)"
 
-  # Bước 5: Chờ trang load sau khi đăng nhập
   - action: "wait"
     params:
       milliseconds: 3000
-    description: "Wait for the secure area to load"
-      
-  # Bước 6: Chụp ảnh màn hình để xác nhận đã vào được trang secure
+    description: "Chờ sau khi click"
+
   - action: "screenshot"
     params:
-      path: "screenshots/verify_login_success.png"
-    description: "Screenshot the secure area page"
-
-  # Bước 7: Lưu lại cookie sau khi đăng nhập thành công
-  - action: "save_cookies"
-    description: "Save session cookies for future use"
+      path: "screenshots/click_result.png"
+    description: "Chụp ảnh kết quả"

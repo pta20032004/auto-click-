@@ -11,14 +11,34 @@ class CookieManager:
 
     def load_cookies_to_context(self, context: BrowserContext, profile_path: str):
         """
-        Loads cookies from a file and adds them to the browser context. [cite: 21, 40]
-        This should be done before navigating to any page.
+        Loads cookies from a file and adds them to the browser context.
+        This version is updated to handle complex JSON objects from browser extensions.
         """
         if os.path.exists(profile_path):
             print(f"Loading cookies from: {profile_path}")
             with open(profile_path, 'r') as f:
-                cookies = json.load(f)
-                context.add_cookies(cookies)
+                try:
+                    loaded_data = json.load(f)
+                    cookies_to_load = []
+
+                    # Check if the loaded data is a dictionary that contains a 'cookies' key
+                    # This handles formats from popular cookie exporter extensions. 
+                    if isinstance(loaded_data, dict) and 'cookies' in loaded_data:
+                        cookies_to_load = loaded_data['cookies']
+                    # Check if the loaded data is already a list (the format our app saves in)
+                    elif isinstance(loaded_data, list):
+                        cookies_to_load = loaded_data
+                    
+                    if cookies_to_load:
+                        context.add_cookies(cookies_to_load)
+                        print(f"Successfully loaded {len(cookies_to_load)} cookies.")
+                    else:
+                        print("Warning: Cookie file was found, but no valid cookies were loaded from it.")
+
+                except json.JSONDecodeError:
+                    print(f"Error: Could not decode JSON from {profile_path}. The file might be corrupted.")
+                except Exception as e:
+                    print(f"An unexpected error occurred while loading cookies: {e}")
         else:
             print(f"Cookie file not found: {profile_path}. Starting a new session.")
 

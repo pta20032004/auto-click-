@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Click để lấy tọa độ</title>
+</head>
+<body>
+  <h2>Chọn ảnh và click vào ảnh để lấy tọa độ (X, Y)</h2>
+  <input type="file" id="upload" accept="image/*"><br><br>
+  <canvas id="canvas"></canvas>
+  <p id="coords">Toạ độ: </p>
+
+  <script>
+    const upload = document.getElementById('upload');
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const coordsText = document.getElementById('coords');
+
+    upload.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const img = new Image();
+      img.onload = function() {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+      };
+      img.src = URL.createObjectURL(file);
+    });
+
+    canvas.addEventListener('click', function(e) {
+      const rect = canvas.getBoundingClientRect();
+      const x = Math.floor(e.clientX - rect.left);
+      const y = Math.floor(e.clientY - rect.top);
+      coordsText.textContent = `Toạ độ: (${x}, ${y})`;
+    });
+  </script>
+</body>
+</html>
