@@ -1,0 +1,60 @@
+# workflows/config.yaml
+
+settings:
+  headless: false
+  browser: "chromium"
+  viewport:
+    width: 1920
+    height: 1080
+  zoom_level: 1.0
+
+authentication:
+  enabled: true # Bật để lưu và tải cookie
+  profile_path: "cookies/the_internet_session.json"
+
+workflow:
+  # Bước 1: Đi tới trang đăng nhập
+  - action: "goto"
+    params:
+      url: "http://the-internet.herokuapp.com/login"
+    description: "Navigate to the login page"
+
+  # Bước 2: Click vào ô username và nhập liệu
+  - action: "type"
+    params:
+      x: 950
+      y: 470
+      text: "tomsmith"
+      clear_first: true
+    description: "Enter username"
+
+  # Bước 3: Click vào ô password và nhập liệu
+  - action: "type"
+    params:
+      x: 950
+      y: 500
+      text: "SuperSecretPassword!"
+    description: "Enter password"
+      
+  # Bước 4: Click nút Login
+  - action: "click"
+    params:
+      x: 950
+      y: 555
+    description: "Click the login button"
+
+  # Bước 5: Chờ trang load sau khi đăng nhập
+  - action: "wait"
+    params:
+      milliseconds: 3000
+    description: "Wait for the secure area to load"
+      
+  # Bước 6: Chụp ảnh màn hình để xác nhận đã vào được trang secure
+  - action: "screenshot"
+    params:
+      path: "screenshots/verify_login_success.png"
+    description: "Screenshot the secure area page"
+
+  # Bước 7: Lưu lại cookie sau khi đăng nhập thành công
+  - action: "save_cookies"
+    description: "Save session cookies for future use"

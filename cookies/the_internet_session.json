@@ -1,0 +1,52 @@
+[
+  {
+    "name": "rack.session",
+    "value": "BAh7CUkiD3Nlc3Npb25faWQGOgZFVEkiRWVmYWUwZmQ1Mjk4NzY0YjBkMTlm%0AMGM0ZTdmM2ExMzNmMDFlZjlkZDUxMmMwYzliOGMyN2EwOTNiMmRjNzYxMjAG%0AOwBGSSIJY3NyZgY7AEZJIiU4YjEzMDMxNDE3MjlmNjVlNmZkYmU3NDk4NzM2%0AZjFlYgY7AEZJIg10cmFja2luZwY7AEZ7B0kiFEhUVFBfVVNFUl9BR0VOVAY7%0AAFRJIi01NzU4YTVjNWFlM2U4YmNiYmM0MzYzOTMyODllZDJmYmRiZDg4MTVj%0ABjsARkkiGUhUVFBfQUNDRVBUX0xBTkdVQUdFBjsAVEkiLWQ0ZTdkMzNmNGVi%0ANzNiY2U4ZmY3MDdjODBiNjlhYzU3ZWU1YzlmYmMGOwBGSSIKZmxhc2gGOwBG%0AewA%3D%0A--99723743fc8f4b40cef73c8e9eb6fa02e64fa38d",
+    "domain": "the-internet.herokuapp.com",
+    "path": "/",
+    "expires": -1,
+    "httpOnly": true,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "optimizelySegments",
+    "value": "%7B%7D",
+    "domain": ".the-internet.herokuapp.com",
+    "path": "/",
+    "expires": 1789019938.131327,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "optimizelyEndUserId",
+    "value": "oeu1754459938132r0.5810538918424015",
+    "domain": ".the-internet.herokuapp.com",
+    "path": "/",
+    "expires": 1789019938.132957,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "optimizelyBuckets",
+    "value": "%7B%7D",
+    "domain": ".the-internet.herokuapp.com",
+    "path": "/",
+    "expires": 1789019938.134112,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  },
+  {
+    "name": "optimizelyPendingLogEvents",
+    "value": "%5B%22n%3Dengagement%26g%3D298283957%26u%3Doeu1754459938132r0.5810538918424015%26wxhr%3Dtrue%26t%3D1754459939251%26f%3D298349752%2C318188263%22%2C%22n%3Dhttp%253A%252F%252Fthe-internet.herokuapp.com%252Flogin%26u%3Doeu1754459938132r0.5810538918424015%26wxhr%3Dtrue%26t%3D1754459938135%26f%3D298349752%2C318188263%22%5D",
+    "domain": ".the-internet.herokuapp.com",
+    "path": "/",
+    "expires": 1754459954,
+    "httpOnly": false,
+    "secure": false,
+    "sameSite": "Lax"
+  }
+]
